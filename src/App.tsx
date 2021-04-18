@@ -3,6 +3,7 @@ import { Container } from './styles'
 
 export function App() {
   const [xpTotal, setXpTotal] = useState(0)
+  const [level, setLevel] = useState(0)
   const [breedSelected, setBreedSelected] = useState("")
   const [optionsBonus, setOptionsBonus]:any = useState([])
   const [breedBonusSelected, setBreedBonusSelected] = useState("")
@@ -13,6 +14,12 @@ export function App() {
   const [acerto, setAcerto] = useState("")
   const [reflexo, setReflexo] = useState("")
   const [constituicao, setConstituicao] = useState("")
+
+  const [forcaBonusBreedHuman, setForcaBonusBreedHuman] = useState(0)
+  const [destrezaBonusBreedHuman, setDestrezaBonusBreedHuman] = useState(0)
+  const [acertoBonusBreedHuman, setAcertoBonusBreedHuman] = useState(0)
+  const [reflexoBonusBreedHuman, setReflexoBonusBreedHuman] = useState(0)
+  const [constituicaoBonusBreedHuman, setConstituicaoBonusBreedHuman] = useState(0)
 
   const [forcaBonusBreed, setForcaBonusBreed] = useState(0)
   const [destrezaBonusBreed, setDestrezaBonusBreed] = useState(0)
@@ -40,6 +47,9 @@ export function App() {
   
   const [counterXp, setCounterXp] = useState(0)
 
+  // const [counterXpHumanoCounter, setCounterXpHumanoCounter] = useState(0)
+  const [counterXpHumanoActive, setCounterXpHumanoActive] = useState(false)
+
   function calculateAtributte(){
     const total = Number(forca) + Number(destreza) + Number(acerto) + Number(reflexo) + Number(constituicao)
 
@@ -47,11 +57,41 @@ export function App() {
     setCounterXp(newCounterXp)
   }
 
+  function calculateCounterBonusHuman(){
+    // const total = forcaBonusBreedHuman + destrezaBonusBreedHuman + acertoBonusBreedHuman + reflexoBonusBreedHuman + constituicaoBonusBreedHuman;
+
+    // const newCounterXpHuman = 8 - total;
+    // setCounterXpHumanoCounter(newCounterXpHuman)
+  }
+
   function updateAtributo(e:any, valuePast: string, setFunction: any){
     let value = Number(e.target.value);
 
     if(value < 0){
       return
+    }
+
+    // console.log(counterXpHumanoActive)
+    // console.log(counterXp)
+
+    if(counterXpHumanoActive){
+      
+      if(Number(valuePast) > 0){
+        const valueEddited = value - Number(valuePast);
+  
+        if(valueEddited > counterXp + 8){
+          return
+        }
+  
+        setFunction(value)
+        return 
+      }
+  
+      if(value > counterXp + 8){
+        return
+      }
+      
+      setFunction(value)
     }
 
     if(Number(valuePast) > 0){
@@ -68,15 +108,17 @@ export function App() {
     if(value > counterXp){
       return
     }
-
-    // const newCounterXp = counterXp - Number(value)
-    // setCounterXp(newCounterXp)
+    
     setFunction(value)
   }
 
   
   function updateOptionsBonusBreed(){
     switch (breedSelected) {
+      case "8P":
+        setCounterXpHumanoActive(true)
+        break;
+
       case "Code2FD2A4R":
         setOptionsBonus([
           {
@@ -513,6 +555,109 @@ export function App() {
     }
   }
 
+  function handleLevel(value : number){
+    const lvl1 = value < 40;
+    const lvl2 = value >= 40 && value < 60;
+    const lvl3 = value >= 60 && value < 80;
+    const lvl4 = value >= 80 && value < 100;
+    const lvl5 = value >= 100 && value < 130;
+    const lvl6 = value >= 130 && value < 160;
+    const lvl7 = value >= 160 && value < 190;
+    const lvl8 = value >= 190 && value < 220;
+    const lvl9 = value >= 220 && value < 250;
+    const lvl10 = value >= 250 && value < 300;
+    const lvl11 = value >= 300 && value < 350;
+    const lvl12 = value >= 350 && value < 400;
+    const lvl13 = value >= 400 && value < 450;
+    const lvl14 = value >= 450 && value < 500;
+    const lvl15 = value >= 500 && value < 580;
+    const lvl16 = value >= 580 && value < 660;
+    const lvl17 = value >= 660 && value < 740;
+    const lvl18 = value >= 740 && value < 820;
+    const lvl19 = value >= 820 && value < 900;
+    const lvl20 = value >= 900;
+
+    if(lvl1){
+      setLevel(1)
+    }
+
+    if(lvl2){
+      setLevel(2)
+    }
+
+    if(lvl3){
+      setLevel(3)
+    }
+
+    if(lvl4){
+      setLevel(4)
+    }
+
+    if(lvl5){
+      setLevel(5)
+    }
+
+    if(lvl6){
+      setLevel(6)
+    }
+
+    if(lvl7){
+      setLevel(7)
+    }
+
+    if(lvl8){
+      setLevel(8)
+    }
+
+    if(lvl9){
+      setLevel(9)
+    }
+
+    if(lvl10){
+      setLevel(10)
+    }
+
+    if(lvl11){
+      setLevel(11)
+    }
+
+    if(lvl12){
+      setLevel(12)
+    }
+
+    if(lvl13){
+      setLevel(13)
+    }
+
+    if(lvl14){
+      setLevel(14)
+    }
+
+    if(lvl15){
+      setLevel(15)
+    }
+
+    if(lvl16){
+      setLevel(16)
+    }
+
+    if(lvl17){
+      setLevel(17)
+    }
+
+    if(lvl18){
+      setLevel(18)
+    }
+
+    if(lvl19){
+      setLevel(19)
+    }
+
+    if(lvl20){
+      setLevel(20)
+    }
+  }
+
   useEffect(() => {
     calculateAtributte()
   }, [forca, destreza, acerto, reflexo, constituicao])
@@ -527,6 +672,7 @@ export function App() {
     }
 
     setCounterXp(xpTotal)
+    handleLevel(xpTotal)
   }, [xpTotal])
 
   useEffect(() => {
@@ -540,6 +686,7 @@ export function App() {
   }, [styleFigthSelected])
 
   useEffect(() => {
+    setCounterXpHumanoActive(false)
     updateOptionsBonusBreed()
   }, [breedSelected])
 
@@ -552,6 +699,16 @@ export function App() {
 
     updateBonusBreed()
   }, [breedBonusSelected])
+
+  useEffect(() => {
+    setForca("")
+    setDestreza("")
+    setAcerto("")
+    setReflexo("")
+    setConstituicao("")
+
+    calculateAtributte()
+  }, [counterXpHumanoActive])
 
   useEffect(() =>{
     const forcaFinal = Number(forca) + Number(forcaBonusBreed) + Number(forcaBonusFight)
@@ -566,15 +723,10 @@ export function App() {
     setReflexoFinal(reflexoFinal)
     setConstituicaoFinal(constituicaoFinal)
 
-    console.log("FORCA")
     handleScaleAttributes(forcaFinal, setForcaFinalScale);
-    console.log("DESTREZA")
     handleScaleAttributes(destrezaFinal, setDestrezaFinalScale);
-    console.log("ACERTO")
     handleScaleAttributes(acertoFinal, setAcertoFinalScale);
-    console.log("REFLEXO")
     handleScaleAttributes(reflexoFinal, setReflexoFinalScale);
-    console.log("CONSTITUICAO")
     handleScaleAttributes(constituicaoFinal, setConstituicaoFinalScale);
 
   }, [
@@ -614,7 +766,8 @@ export function App() {
         <div className="formItem">
           <span className="formItemText">Selecione sua raça :</span>
           <select className="formItemSelect" name="select" onChange={e => setBreedSelected(e.target.value)}>
-            <option value="CodeIndefinido">Humano</option>
+            <option value="CodeIndefinido"></option>
+            <option value="8P">Humano</option>
             <option value="Code2FD2A4R">Celestial</option>
             <option value="Code4FD2A2C">Braços longos</option>
             <option value="Code4FD2A2C">Pernas longas</option>
@@ -659,13 +812,19 @@ export function App() {
         </div>
         <div className="formItem">
           <span className="formItemText">Bonificação da raça :</span>
-          <select className="formItemSelect" name="select" onChange={e => setBreedBonusSelected(e.target.value)}>
-            {
-              optionsBonus.map((option : any) =>{
-                return <option key={option.code} value={option.code}>{option.message}</option>
-              })
-            }
-          </select>
+          {
+            counterXpHumanoActive ? (
+              <input className="formItemInput" type="text" value="Você recebeu 8 pontos adicionais" readOnly/>
+            ) : (
+              <select className="formItemSelect" name="select" onChange={e => setBreedBonusSelected(e.target.value)}>
+              {
+                optionsBonus.map((option : any) =>{
+                  return <option key={option.code} value={option.code}>{option.message}</option>
+                })
+              }
+            </select>
+            )
+          }
         </div>
         
         <div className="formItem">
@@ -697,27 +856,39 @@ export function App() {
         
         <div className="formItem">
           <span className="formItemText">Pontos em Força :</span>
-          <input className="formItemInput" type="number" value={forca} onChange={(e) => updateAtributo(e, forca, setForca)}/>
+          <input className="formItemInput" type="number" value={
+            Number(forca) 
+            // + forcaBonusBreedHuman
+          } onChange={(e) => updateAtributo(e, forca, setForca)}/>
         </div>
         
         <div className="formItem">
           <span className="formItemText">Pontos em Destreza :</span>
-          <input className="formItemInput" type="number" value={destreza} onChange={(e) => updateAtributo(e, destreza, setDestreza)}/>
+          <input className="formItemInput" type="number" value={
+            Number(destreza) 
+            // + destrezaBonusBreedHuman
+          } onChange={(e) => updateAtributo(e, destreza, setDestreza)}/>
         </div>
         
         <div className="formItem">
           <span className="formItemText">Pontos em Acerto :</span>
-          <input className="formItemInput" type="number" value={acerto} onChange={(e) => updateAtributo(e, acerto, setAcerto)}/>
+          <input className="formItemInput" type="number" value={Number(acerto) 
+            // + acertoBonusBreedHuman
+          } onChange={(e) => updateAtributo(e, acerto, setAcerto)}/>
         </div>
         
         <div className="formItem">
           <span className="formItemText">Pontos em Reflexo :</span>
-          <input className="formItemInput" type="number" value={reflexo} onChange={(e) => updateAtributo(e, reflexo, setReflexo)}/>
+          <input className="formItemInput" type="number" value={Number(reflexo) 
+            // + reflexoBonusBreedHuman
+          } onChange={(e) => updateAtributo(e, reflexo, setReflexo)}/>
         </div>
         
         <div className="formItem">
           <span className="formItemText">Pontos em Constituição :</span>
-          <input className="formItemInput" type="number" value={constituicao} onChange={(e) => updateAtributo(e, constituicao, setConstituicao)}/>
+          <input className="formItemInput" type="number" value={Number(constituicao) 
+            // + constituicaoBonusBreedHuman
+          } onChange={(e) => updateAtributo(e, constituicao, setConstituicao)}/>
         </div>
       </div>
       
@@ -725,6 +896,22 @@ export function App() {
         <h3 className="titleCategory">
           Visualizar sua ficha
         </h3>
+
+        <div className="attributesItem">
+          <strong className="attributesItemText">Seu Nível:</strong>
+          <span>{level}</span>
+        </div>
+
+        <div className="attributesItem">
+          <strong className="attributesItemText">Pontos de Vida:</strong>
+          <span>{(xpTotal * 6) + (constituicaoFinal * 20)}</span>
+        </div>
+
+        <div className="attributesItem">
+          <strong className="attributesItemText">Stamina:</strong>
+          <span>{level * 100}</span>
+        </div><br/>  
+        
         
         <div className="attributesContent">
           <div className="attributesItem">
@@ -847,6 +1034,7 @@ export function App() {
             <span>0</span>
           </div>  
         </div>
+        
         <br/>
       </div>
     </Container>
