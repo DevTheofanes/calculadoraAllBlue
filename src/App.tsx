@@ -461,44 +461,44 @@ export function App() {
     const bonus2C = styleFigthSelected.indexOf("2C") > 1;
 
     if(bonus3F){
-      setForcaBonusFight(3)
+      setForcaBonusFight(3 * level)
     }
 
     if(bonus3D){
-      setDestrezaBonusFight(3)
+      setDestrezaBonusFight(3 * level)
     }
 
     if(bonus3A){
-      setAcertoBonusFight(3)
+      setAcertoBonusFight(3 * level)
     }
 
     if(bonus3R){
-      setReflexoBonusFight(3)
+      setReflexoBonusFight(3 * level)
     }
 
     if(bonus3C){
-      setConstituicaoBonusFight(3)
+      setConstituicaoBonusFight(3 * level)
     }
 
     //Bonus 2
     if(bonus2F){
-      setForcaBonusFight(2)
+      setForcaBonusFight(2 * level)
     }
 
     if(bonus2D){
-      setDestrezaBonusFight(2)
+      setDestrezaBonusFight(2 * level)
     }
 
     if(bonus2A){
-      setAcertoBonusFight(2)
+      setAcertoBonusFight(2 * level)
     }
 
     if(bonus2R){
-      setReflexoBonusFight(2)
+      setReflexoBonusFight(2 * level)
     }
 
     if(bonus2C){
-      setConstituicaoBonusFight(2)
+      setConstituicaoBonusFight(2 * level)
     }
   }
 
@@ -920,12 +920,12 @@ export function App() {
               <span className="attributesNormalText">{forca}</span>
               {
                 forcaBonusFight ? (
-                  <span className="attributesBonusEdcText">+{forcaBonusFight} [Edc]</span>
+                  <span className="attributesBonusEdcText">[+{forcaBonusFight} Edc]</span>
                 ) : null
               }
               {
                 forcaBonusBreed ? (
-                  <span className="attributesBonusRacialText">+{forcaBonusBreed} [Racial]</span>
+                  <span className="attributesBonusRacialText">[+{forcaBonusBreed} Racial]</span>
                 ) : null
               }
               </strong>
@@ -941,12 +941,12 @@ export function App() {
               <span className="attributesNormalText">{destreza}</span>
               {
                 destrezaBonusFight ? (
-                  <span className="attributesBonusEdcText">+{destrezaBonusFight} [Edc]</span>
+                  <span className="attributesBonusEdcText">[+{destrezaBonusFight} Edc]</span>
                 ) : null
               }
               {
                 destrezaBonusBreed ? (
-                  <span className="attributesBonusRacialText">+{destrezaBonusBreed} [Racial]</span>
+                  <span className="attributesBonusRacialText">[+{destrezaBonusBreed} Racial]</span>
                 ) : null
               }
               </strong>
@@ -962,12 +962,12 @@ export function App() {
                 <span className="attributesNormalText">{acerto}</span>
                 {
                   acertoBonusFight ? (
-                    <span className="attributesBonusEdcText">+{acertoBonusFight} [Edc]</span>
+                    <span className="attributesBonusEdcText">[+{acertoBonusFight} Edc]</span>
                   ) : null
                 }
                 {
                   acertoBonusBreed ? (
-                    <span className="attributesBonusRacialText">+{acertoBonusBreed} [Racial]</span>
+                    <span className="attributesBonusRacialText">[+{acertoBonusBreed} Racial]</span>
                   ) : null
                 }
               </strong>
@@ -983,12 +983,12 @@ export function App() {
               <span className="attributesNormalText">{reflexo}</span>
               {
                 reflexoBonusFight ? (
-                  <span className="attributesBonusEdcText">+{reflexoBonusFight} [Edc]</span>
+                  <span className="attributesBonusEdcText">[+{reflexoBonusFight} Edc]</span>
                 ) : null
               }
               {
                 reflexoBonusBreed ? (
-                  <span className="attributesBonusRacialText">+{reflexoBonusBreed} [Racial]</span>
+                  <span className="attributesBonusRacialText">[+{reflexoBonusBreed} Racial]</span>
                 ) : null
               }
             </strong>
@@ -1004,12 +1004,12 @@ export function App() {
               <span className="attributesNormalText">{constituicao}</span>
               {
                 constituicaoBonusFight ? (
-                  <span className="attributesBonusEdcText">+{constituicaoBonusFight} [Edc]</span>
+                  <span className="attributesBonusEdcText">[+{constituicaoBonusFight} Edc]</span>
                 ) : null
               }
               {
                 constituicaoBonusBreed ? (
-                  <span className="attributesBonusRacialText">+{constituicaoBonusBreed} [Racial] </span>
+                  <span className="attributesBonusRacialText">[+{constituicaoBonusBreed} Racial] </span>
                 ) : null
               }
             </strong>
